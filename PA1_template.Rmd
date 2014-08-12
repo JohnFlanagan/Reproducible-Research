@@ -129,7 +129,6 @@ stepswd <- as.numeric(weekday)
 timewd <- c("weekday")
 timewd <- rep(timewd, 288)
 wddf <- data.frame(Interval, stepswd, timewd)
-
 stepswe <- as.numeric(weekend)
 timewe <- c("weekend")
 timewe <- rep(timewe, 288)
