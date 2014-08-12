@@ -26,7 +26,8 @@ data$date <- strptime(data$date, "%Y-%m-%d")
 1. We create a histogram of total number of steps taken each day.
 
 ```{r}
-plot(data$date, data$steps, type = "h", main = "Total number of steps taken each day", ylab = "Number of steps", xlab = "Date")
+plot(data$date, data$steps, type = "h", main = "Total number of steps taken 
+     each day", ylab = "Number of steps", xlab = "Date")
 ```
 
 2. We then calculate the mean and median number of steps taken per day and return it in the text below.
@@ -34,7 +35,8 @@ plot(data$date, data$steps, type = "h", main = "Total number of steps taken each
 ```{r}
 meansteps <- mean(data$steps, na.rm=TRUE)
 mediansteps <- median(data$steps, na.rm=TRUE)
-##The mean number of steps is `r meansteps` and the median number of steps is `r mediansteps`. Please note that missing values have been ignored.
+##The mean number of steps is `r meansteps` and the median number of steps is 
+##`r mediansteps`. Please note that missing values have been ignored.
 ```
 
 The mean number of steps is `r meansteps` and the median number of steps is `r mediansteps`. Please note that missing values have been ignored.
@@ -45,14 +47,16 @@ The mean number of steps is `r meansteps` and the median number of steps is `r m
 
 ```{r}
 DAP <- sapply(split(data$steps, data$interval), mean, na.rm=TRUE)
-plot(DAP, type = "s", main = "Average number of steps taken per 5 minute interval", ylab = "Average number of steps", xlab = "5 minute interval")
+plot(DAP, type = "s", main = "Average number of steps taken per 5 minute 
+     interval", ylab = "Average number of steps", xlab = "5 minute interval")
 ```
 
 2. We then calculate the max 5 minute interval and return it in the text below
 
 ```{r}
 maxDAP <- which(DAP == max(DAP))
-##The 5-minute interval, on average across all the days in the dataset, which contains the maximum number of steps, is the `r maxDAP`th interval.
+##The 5-minute interval, on average across all the days in the dataset, which
+##contains the maximum number of steps, is the `r maxDAP`th interval.
 ```
 
 The 5-minute interval, on average across all the days in the dataset, which contains the maximum number of steps, is the `r maxDAP`th interval.
@@ -91,10 +95,13 @@ completedata$steps <- newv
 4. First, we make a histogram of the total number of steps taken each day and then we calculate and report the mean and median total number of steps taken per day in the text below.
 
 ```{r}
-plot(completedata$date, completedata$steps, type = "h", main = "Total number of steps taken each day", ylab = "Number of steps", xlab = "Date")
+plot(completedata$date, completedata$steps, type = "h", main = "Total number 
+     of steps taken each day", ylab = "Number of steps", xlab = "Date")
 meansteps2 <- mean(completedata$steps)
 mediansteps2 <- median(completedata$steps)
-##The mean number of steps taken each day is `r meansteps` and the median number of steps is `r mediansteps`. Please note that missing values have been replaced with the average value per 5 minute interval.
+##The mean number of steps taken each day is `r meansteps` and the median number 
+##of steps is `r mediansteps`. Please note that missing values have been 
+##replaced with the average value per 5 minute interval.
 ```
 
 The mean number of steps taken each day is `r meansteps2` and the median number of steps is `r mediansteps2`. Please note that missing values have been replaced with the average value per 5 minute interval.
@@ -136,5 +143,6 @@ wedf <- data.frame(Interval, stepswe, timewe)
 colnames(wedf) <- c("Interval", "steps", "time")
 colnames(wddf) <- c("Interval", "steps", "time")
 alldata <- rbind(wddf, wedf)
-xyplot(steps ~ Interval | time, data = alldata, type = "l", layout = c(1, 2), ylab = "Number of steps")
+xyplot(steps ~ Interval | time, data = alldata, type = "l", 
+       layout = c(1, 2), ylab = "Number of steps")
 ```

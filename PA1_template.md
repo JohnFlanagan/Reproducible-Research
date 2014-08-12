@@ -29,7 +29,8 @@ data$date <- strptime(data$date, "%Y-%m-%d")
 
 
 ```r
-plot(data$date, data$steps, type = "h", main = "Total number of steps taken each day", ylab = "Number of steps", xlab = "Date")
+plot(data$date, data$steps, type = "h", main = "Total number of steps taken 
+     each day", ylab = "Number of steps", xlab = "Date")
 ```
 
 ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
@@ -40,7 +41,8 @@ plot(data$date, data$steps, type = "h", main = "Total number of steps taken each
 ```r
 meansteps <- mean(data$steps, na.rm=TRUE)
 mediansteps <- median(data$steps, na.rm=TRUE)
-##The mean number of steps is `r meansteps` and the median number of steps is `r mediansteps`. Please note that missing values have been ignored.
+##The mean number of steps is `r meansteps` and the median number of steps is 
+##`r mediansteps`. Please note that missing values have been ignored.
 ```
 
 The mean number of steps is 37.3826 and the median number of steps is 0. Please note that missing values have been ignored.
@@ -52,7 +54,8 @@ The mean number of steps is 37.3826 and the median number of steps is 0. Please 
 
 ```r
 DAP <- sapply(split(data$steps, data$interval), mean, na.rm=TRUE)
-plot(DAP, type = "s", main = "Average number of steps taken per 5 minute interval", ylab = "Average number of steps", xlab = "5 minute interval")
+plot(DAP, type = "s", main = "Average number of steps taken per 5 minute 
+     interval", ylab = "Average number of steps", xlab = "5 minute interval")
 ```
 
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
@@ -62,7 +65,8 @@ plot(DAP, type = "s", main = "Average number of steps taken per 5 minute interva
 
 ```r
 maxDAP <- which(DAP == max(DAP))
-##The 5-minute interval, on average across all the days in the dataset, which contains the maximum number of steps, is the `r maxDAP`th interval.
+##The 5-minute interval, on average across all the days in the dataset, which
+##contains the maximum number of steps, is the `r maxDAP`th interval.
 ```
 
 The 5-minute interval, on average across all the days in the dataset, which contains the maximum number of steps, is the 104th interval.
@@ -105,7 +109,8 @@ completedata$steps <- newv
 
 
 ```r
-plot(completedata$date, completedata$steps, type = "h", main = "Total number of steps taken each day", ylab = "Number of steps", xlab = "Date")
+plot(completedata$date, completedata$steps, type = "h", main = "Total number 
+     of steps taken each day", ylab = "Number of steps", xlab = "Date")
 ```
 
 ![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10.png) 
@@ -113,7 +118,9 @@ plot(completedata$date, completedata$steps, type = "h", main = "Total number of 
 ```r
 meansteps2 <- mean(completedata$steps)
 mediansteps2 <- median(completedata$steps)
-##The mean number of steps taken each day is `r meansteps` and the median number of steps is `r mediansteps`. Please note that missing values have been replaced with the average value per 5 minute interval.
+##The mean number of steps taken each day is `r meansteps` and the median number 
+##of steps is `r mediansteps`. Please note that missing values have been 
+##replaced with the average value per 5 minute interval.
 ```
 
 The mean number of steps taken each day is 37.3826 and the median number of steps is 0. Please note that missing values have been replaced with the average value per 5 minute interval.
@@ -130,11 +137,26 @@ install.packages("timeDate", repos="http://cran.rstudio.com/")
 ```
 
 ```
-## Error in install.packages : Updating loaded packages
+## Installing package into 'C:/Users/mikoflan/Documents/R/win-library/3.1'
+## (as 'lib' is unspecified)
+```
+
+```
+## package 'timeDate' successfully unpacked and MD5 sums checked
+## 
+## The downloaded binary packages are in
+## 	C:\Users\mikoflan\AppData\Local\Temp\RtmpQ3X17d\downloaded_packages
 ```
 
 ```r
 library("timeDate")
+```
+
+```
+## Warning: package 'timeDate' was built under R version 3.1.1
+```
+
+```r
 time <- completedata$date
 weekend <- sapply(as.Date(time), isWeekend)
 weekend <- gsub("TRUE", "weekend", weekend)
@@ -164,7 +186,8 @@ wedf <- data.frame(Interval, stepswe, timewe)
 colnames(wedf) <- c("Interval", "steps", "time")
 colnames(wddf) <- c("Interval", "steps", "time")
 alldata <- rbind(wddf, wedf)
-xyplot(steps ~ Interval | time, data = alldata, type = "l", layout = c(1, 2), ylab = "Number of steps")
+xyplot(steps ~ Interval | time, data = alldata, type = "l", 
+       layout = c(1, 2), ylab = "Number of steps")
 ```
 
 ![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12.png) 
